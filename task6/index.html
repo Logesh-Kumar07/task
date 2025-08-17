@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .game {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 300px;
+    }
+    input {
+      padding: 8px;
+      width: 80px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 12px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 15px;
+      font-weight: bold;
+      white-space: pre-line; 
+    }
+  </style>
+</head>
+<body>
+  <div class="game">
+    <h2>Guess the Number</h2>
+    <p>I’m thinking of a number between 1 and 100.</p>
+    <input type="number" id="guess" />
+    <button onclick="checkGuess()">Guess</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const secret = 75;
+    const output = document.getElementById("output");
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById("guess").value);
+
+      if (isNaN(guess)) {
+        return;
+      }
+
+      if (guess < secret) {
+        output.textContent += "Higher\n";
+      } else if (guess > secret) {
+        output.textContent += "Lower\n";
+      } else {
+        output.textContent += "Correct!\n";
+      }
+
+      document.getElementById("guess").value = "";
+    }
+  </script>
+</body>
+</html>
